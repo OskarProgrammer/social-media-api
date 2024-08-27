@@ -4,23 +4,32 @@ Tables:
 users with endpoints:
   /getUsers
   /getUserById/{id}
-  /getUserByName/{name}
+  /getUsersByName/{name}
 
-  /createUser -> requestBody(User)
+  /createUser -> requestBody(User) and also change the existing
 
   /deleteAll
   /deleteUserWithId/{id}
 
-  /changeUser/{id} -> requestBody(User)
 
 posts with endpoints:
   /getPosts
   /getPostById/{id}
-  /getAllPostsByOwnerId/{ownerId}
+  /getPostsByOwnerId/{ownerId}
 
-  /createPost -> requestBody(Post)
+  /createPost -> requestBody(Post) and also change the existing 
 
   /deleteAll
   /deletePost/{id}
 
-  /changePost/{id} -> requestBody(Post)
+comments with endpoints:
+  /getComments
+  /getCommentsById/{id} 
+  /getCommentsByPostId/{postId}
+  /getCommentsByOwnerId/{ownerId}
+
+  /createComment -> requestBody(Comment) and also change the existing
+
+  /deleteAll
+  /deleteAllByOwnerId/{id}
+  
