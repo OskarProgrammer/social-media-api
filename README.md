@@ -1,7 +1,7 @@
 # Social media api
 
 Tables: 
-users with endpoints:\n
+users with endpoints:
   /getUsers
   /getUserById/{id}
   /getUserByName/{name}
