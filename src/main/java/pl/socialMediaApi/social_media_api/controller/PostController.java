@@ -35,6 +35,7 @@ public class PostController {
         return postService.getAllPostsByOwnerId(id);
     }
 
+    //creating and also changing the post if the id is already in database
     @PostMapping("createPost")
     public Optional<Post> createPost(@RequestBody Post post){
         return postService.createPost(post);
@@ -48,11 +49,6 @@ public class PostController {
     @DeleteMapping("deletePost/{id}")
     public String deletePost(@PathVariable long id){
         return postService.deletePost(id);
-    }
-
-    @PutMapping("changePost/{id}")
-    public Optional<Post> changePost(@PathVariable long id, @RequestBody Post post){
-        return postService.changePost(id, post);
     }
 
 

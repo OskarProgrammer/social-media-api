@@ -46,6 +46,15 @@ public class PostService {
             throw new IllegalStateException("There is no such user");
         }
 
+        Optional<Post> currentPost = postRepo.findById(post.getId());
+
+        if (currentPost.isEmpty()){
+            postRepo.save(post);
+            return Optional.of(post);
+        }
+
+        postRepo.deleteById(post.getId());
+
         postRepo.save(post);
 
         return Optional.of(post);
@@ -54,22 +63,6 @@ public class PostService {
 
     public void deleteAllPosts() {
         postRepo.deleteAll();
-    }
-
-    public Optional<Post> changePost(long id, Post post) {
-        Optional<Post> checkPost = postRepo.findById(id);
-
-        if (checkPost.isEmpty()) {
-            throw new IllegalStateException("There is no such post");
-        }
-
-        postRepo.deleteById(id);
-
-        post.setId(id);
-
-        postRepo.save(post);
-
-        return checkPost;
     }
 
     public String deletePost(long id) {
