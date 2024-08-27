@@ -37,26 +37,26 @@ public class UserController {
         return userService.getUserByName(name);
     }
 
+    @GetMapping(path = "getAllUsersByName/{name}")
+    public Optional<List<User>> getAllUsersByName(@PathVariable("name") String name){
+        return userService.getAllUsersByName(name);
+    }
+
+
     @PostMapping(path = "createUser")
-    public void addUser(@RequestBody User user){
-        userService.addUser(user);
+    public User addUser(@RequestBody User user){
+        return userService.addUser(user);
     }
 
 
     @DeleteMapping(path = "deleteAll")
-    public void deleteUser(){
+    public void deleteUsers(){
         userService.deleteAll();
     }
 
     @DeleteMapping(path = "deleteUserWithId/{id}")
     public void deleteUser(@PathVariable("id") Long id){
         userService.deleteUserWithId(id);
-    }
-
-    @PutMapping(path = "changeUser/{id}")
-    public void changeUser(@PathVariable("id") Long id,
-                           @RequestBody User user){
-        userService.changeUser(id, user);
     }
 
 }

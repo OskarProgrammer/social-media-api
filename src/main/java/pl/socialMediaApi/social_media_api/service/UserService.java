@@ -31,8 +31,18 @@ public class UserService {
         return userRepo.findUserByName(name);
     }
 
-    public void addUser(User user) {
+    public User addUser(User user) {
+        Optional<User> newUser = userRepo.findUserById(user.getId());
+
+        if (newUser.isEmpty()){
+            userRepo.save(user);
+            return user;
+        }
+
+        userRepo.deleteById(user.getId());
         userRepo.save(user);
+
+        return user;
     }
 
     public void deleteUserWithId(Long id) {
@@ -45,20 +55,18 @@ public class UserService {
         userRepo.deleteById(id);
     }
 
+    public void deleteAll() {
 
-    public void changeUser(Long id, User user) {
-        Optional<User> userById = userRepo.findUserById(id);
-
-        if (!userById.isPresent()){
-            throw new IllegalStateException("There is no user with given id ");
-        }
-
-        userRepo.deleteById(id);
-        user.setId(id);
-        userRepo.save(user);
+        userRepo.deleteAll();
     }
 
-    public void deleteAll() {
-        userRepo.deleteAll();
+    public Optional<List<User>> getAllUsersByName(String name) {
+        Optional <List<User>> usersList = userRepo.findAllByName(name);
+
+        if (usersList.isEmpty()){
+            throw new IllegalStateException("No users with the given name");
+        }
+
+        return userRepo.findAllByName(name);
     }
 }
