@@ -32,15 +32,11 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping(path = "getUserByName/{name}")
-    public Optional<User> getUserById(@PathVariable("name") String name){
+    @GetMapping(path = "getUsersByName/{name}")
+    public Optional<List<User>> getUserById(@PathVariable("name") String name){
         return userService.getUserByName(name);
     }
 
-    @GetMapping(path = "getAllUsersByName/{name}")
-    public Optional<List<User>> getAllUsersByName(@PathVariable("name") String name){
-        return userService.getAllUsersByName(name);
-    }
 
 
     @PostMapping(path = "createUser")

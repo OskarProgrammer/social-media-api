@@ -27,8 +27,8 @@ public class UserService {
         return userRepo.findUserById(id);
     }
 
-    public Optional<User> getUserByName(String name) {
-        return userRepo.findUserByName(name);
+    public Optional<List<User>> getUserByName(String name) {
+        return userRepo.findAllByName(name);
     }
 
     public User addUser(User user) {
