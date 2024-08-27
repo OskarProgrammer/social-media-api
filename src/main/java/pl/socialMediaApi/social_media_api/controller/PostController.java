@@ -30,7 +30,7 @@ public class PostController {
         return postService.getPostById(id);
     }
 
-    @GetMapping("getAllPostsByOwnerId/{id}")
+    @GetMapping("getPostsByOwnerId/{id}")
     public Optional<List<Post>> getAllPostsByOwnerId(@PathVariable("id") long id){
         return postService.getAllPostsByOwnerId(id);
     }
